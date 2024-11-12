@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Word - Nour with Garden Background</title>
+    <style>
+        /* Basic setup */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0d1b2a, #1a3c4a);
+            flex-direction: column;
+        }
+
+        /* Glowing animated text */
+        h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            animation: glow 1.5s ease-in-out infinite, scale 1s ease-in-out infinite;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+            display: none; /* Hide initially */
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px #ff0099, 0 0 30px #ff0099, 0 0 40px #ff0099;
+            }
+            50% {
+                text-shadow: 0 0 10px #ff0099, 0 0 20px #ff66b2, 0 0 30px #ff0099;
+            }
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Background: stars */
+        .stars, .ground, .cloud {
+            display: none; /* Hide initially */
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            animation: twinkling 2s infinite;
+        }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Background: grass and plants */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to top, #0a431d, #1a8039);
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Moving clouds */
+        .cloud {
+            position: absolute;
+            top: 10%;
+            width: 150px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50px;
+            filter: blur(10px);
+            opacity: 0.6;
+            animation: moveClouds 20s linear infinite;
+        }
+
+        .cloud:nth-child(2) {
+            left: 20%;
+            width: 200px;
+            height: 100px;
+            animation-delay: -5s;
+        }
+
+        .cloud:nth-child(3) {
+            left: 50%;
+            width: 120px;
+            height: 60px;
+            animation-delay: -2s;
+        }
+
+        .cloud:nth-child(4) {
+            left: 80%;
+            width: 180px;
+            height: 90px;
+            animation-delay: -8s;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                transform: translateX(-200px);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Button styles */
+        .show-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #ff0099;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background-color 0.3s;
+        }
+
+        .show-button:hover {
+            background-color: #ff66b2;
+        }
+    </style>
+</head>
+<body>
+    <button class="show-button" onclick="showAnimation()">Click Me</button>
+    <div class="stars"></div>
+    <div class="ground"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <h1>❤️Noury❤️</h1>
+
+    <script>
+        function showAnimation() {
+            document.querySelector('h1').style.display = 'block';
+            document.querySelectorAll('.stars, .ground, .cloud').forEach(element => {
+                element.style.display = 'block';
+            });
+            document.querySelector('.show-button').style.display = 'none'; // Hide button after click
+        }
+    </script>
+</body>
+</html>
